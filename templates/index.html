@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Inicio · App Segura{% endblock %}
+
+{% block content %}
+<div class="row align-items-center gy-4">
+  <div class="col-lg-6">
+    <h1 class="display-6 fw-bold mb-3">¡Deploy exitoso! 🎉</h1>
+    <p class="lead">
+      Estás viendo la página de inicio servida por <strong>Django</strong> a través de
+      <strong>Gunicorn</strong> y <strong>Nginx</strong>.
+    </p>
+
+    <ul class="list-group list-group-flush my-3">
+      <li class="list-group-item px-0">DEBUG: <code>{{ debug }}</code></li>
+      <li class="list-group-item px-0">Usuario autenticado: <code>{% if user.is_authenticated %}{{ user.username }}{% else %}No{% endif %}</code></li>
+      <li class="list-group-item px-0">
+        Admin: <a href="/admin/" class="link-primary">/admin/</a>
+      </li>
+    </ul>
+
+    <p class="text-muted small">
+      Edita este archivo en <code>templates/index.html</code> y base en <code>templates/base.html</code>.
+    </p>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Prueba rápida de CSRF</h5>
+        <form method="post" action="#">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label class="form-label">Campo de ejemplo</label>
+            <input type="text" class="form-control" placeholder="Escribe algo…">
+          </div>
+          <button class="btn btn-primary" type="button" disabled>Enviar (demo)</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
