@@ -56,7 +56,7 @@ ROOT_URLCONF = 'appsegura.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [ BASE_DIR / 'templates' ],   # 👈 IMPORTANTE
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -64,9 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-
-                # 👇 Nuestro context processor personalizado
-                'core.context_processors.debug_flag',
+                'core.context_processors.debug_flag',  # si lo añadiste
             ],
         },
     },
