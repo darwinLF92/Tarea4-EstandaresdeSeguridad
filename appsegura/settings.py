@@ -131,7 +131,18 @@ MEDIA_ROOT = BASE_DIR / "media"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# Cookies no seguras mientras pruebas en HTTP
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+
+# No fuerces HTTPS ni HSTS por ahora
+SECURE_SSL_REDIRECT = False
+SECURE_HSTS_SECONDS = 0
+
+# Confía en tu IP como origen CSRF (Django 4+ requiere esquema)
+CSRF_TRUSTED_ORIGINS = [
+    "http://45.55.59.81",
+]
+
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SAMESITE = "Lax"
